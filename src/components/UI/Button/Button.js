@@ -5,7 +5,12 @@ import {
 } from './styles';
 
 const button = (props) => (
-  <Button className={props.type} onClick={props.clicked}>{props.children}</Button>
+  <Button
+    className={props.type}
+    disabled={props.disabled}
+    onClick={props.clicked}>
+      {props.children}
+  </Button>
 )
 
 export default button;

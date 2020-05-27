@@ -23,4 +23,9 @@ export const Button = styled.button`
     margin-left: 0;
     padding-left: 0;
   }
+
+  &:disabled {
+    color: #CCC;
+    cursor: not-allowed;
+  }
 `;

@@ -15,8 +15,8 @@ export const Label = styled.div`
 const baseInputCSS = css`
   outline: none;
   width: 100%;
-  border: 1px solid #CCC;
-  background-color: white;
+  border: 1px solid ${props => !props.invalid ? '#CCC' : 'red'};
+  background-color: ${props => !props.invalid ? 'white' : '#FDA49A'} ;
   font: inherit;
   padding: 6px 10px;
   box-sizing: border-box;
