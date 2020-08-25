@@ -7,6 +7,7 @@ const navigationItens = (props) => (
   <Navs>
     <NavigatioItem link="/" exact>Burger Builder</NavigatioItem>
     <NavigatioItem link="/orders">Orders</NavigatioItem>
+    <NavigatioItem link="/auth">Authenticate</NavigatioItem>
   </Navs>
 )
 
