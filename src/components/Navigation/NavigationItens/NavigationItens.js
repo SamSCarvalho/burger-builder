@@ -1,15 +1,15 @@
 import React from 'react';
 
 import { Navs } from './styles';
-import NavigatioItem from './NavigationItem/NavigationItem';
+import NavigationItem from './NavigationItem/NavigationItem';
 
 const navigationItens = (props) => (
   <Navs>
-    <NavigatioItem link="/" exact>Burger Builder</NavigatioItem>
-    {props.isAuthenticated ? <NavigatioItem link="/orders">Orders</NavigatioItem> : null}
+    <NavigationItem link="/" exact>Burger Builder</NavigationItem>
+    {props.isAuthenticated ? <NavigationItem link="/orders">Orders</NavigationItem> : null}
     {!props.isAuthenticated
-      ? <NavigatioItem link="/auth">Authenticate</NavigatioItem>
-      : <NavigatioItem link="/logout">Logout</NavigatioItem>
+      ? <NavigationItem link="/auth">Authenticate</NavigationItem>
+      : <NavigationItem link="/logout">Logout</NavigationItem>
     }
   </Navs>
 )
