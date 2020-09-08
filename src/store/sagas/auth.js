@@ -28,7 +28,7 @@ export function* authUserSaga(action) {
     url =
       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCFULtievqpoWAxtt7NZ2Ja1cfjKoE03_s";
   }
-  
+
   try {
     const response = yield axios.post(url, authData);
 
@@ -42,5 +42,24 @@ export function* authUserSaga(action) {
   } catch (err) {
     yield put(actions.authFail(err.response.data.error));
   }
-  
+}
+
+export function* authCheckStateSaga(action) {
+  const token = yield localStorage.getItem("token");
+  if (!token) {
+    yield put(actions.logout());
+  } else {
+    const expirationDate = yield new Date(localStorage.getItem("expirationDate"));
+    if (expirationDate <= new Date()) {
+      yield put(actions.logout());
+    } else {
+      const userId = yield localStorage.getItem("userId");
+      yield put(actions.authSuccess(token, userId));
+      yield put(
+        actions.checkAuthTimeout(
+          (expirationDate.getTime() - new Date().getTime()) / 1000
+        )
+      );
+    }
+  }
 }
